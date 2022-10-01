@@ -16,8 +16,8 @@ namespace API.Services
         public JWTService(IConfiguration config)
         {
             // from appsettings.json
-            _secret = config.GetSection("JwtConfig").GetSection("secret").Value;
-            _expDate = config.GetSection("JwtConfig").GetSection("expirationInMinutes").Value;
+            _secret = config.GetSection("JWT").GetSection("Key").Value;
+            _expDate = config.GetSection("JWT").GetSection("expirationInMinutes").Value;
         }
 
         public string GenerateSecurityToken(int id, string email, string name, string role)

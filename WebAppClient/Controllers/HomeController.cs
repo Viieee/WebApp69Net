@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using WebAppClient.Models;
 
 namespace WebAppClient.Controllers
 {
+    //[Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -31,6 +33,15 @@ namespace WebAppClient.Controllers
         public IActionResult NotFound404()
         {
             return View("NotFound");
+        }
+
+        public IActionResult Forbidden()
+        {
+            return View("Forbidden");
+        }
+        public IActionResult Unauth()
+        {
+            return View("Unauthorized");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

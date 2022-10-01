@@ -1,0 +1,209 @@
+﻿@{ 
+    Layout = "~/Views/Shared/Auth.cshtml";
+}
+
+<div class="register-box">
+    <div class="card card-outline card-primary">
+        <div class="card-header text-center">
+            <a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+        </div>
+        <div class="card-body">
+            <p class="login-box-msg">Register a new membership</p>
+
+            <form id="formRegister">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" class="form-control" id="registerEmail">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" class="form-control" id="registerPassword">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="registerUsername">Username</label>
+                    <input type="text" class="form-control" id="registerUsername">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="registerFirstName">First Name</label>
+                        <input type="text" class="form-control" id="registerFirstName">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="registerLastName">Last Name</label>
+                        <input type="text" class="form-control" id="registerLastName">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="registerJob">Job</label>
+                        <select id="registerJob" class="form-control">
+                            <option selected>Choose...</option>
+                            <option value="...">...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="registerDepartment">Department</label>
+                        <select id="registerDepartment" class="form-control">
+                            <option selected>Choose...</option>
+                            <option value="...">...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="registerHireDate">Hire Date</label>
+                        <input type="date" class="form-control" id="registerHireDate">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="registerSalary">Salary</label>
+                        <input type="text" class="form-control" id="registerSalary">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="registerPhoneNumber">Phone Number</label>
+                    <input type="text" class="form-control" id="registerPhoneNumber">
+                </div>
+                @*<div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">City</label>
+                        <input type="text" class="form-control" id="inputCity">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputState">State</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputZip">Zip</label>
+                        <input type="text" class="form-control" id="inputZip">
+                    </div>
+                </div>*@
+                @*<div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <label class="form-check-label" for="gridCheck">
+                            Check me out
+                        </label>
+                    </div>
+                </div>*@
+                <button type="submit" class="btn btn-primary">Sign up</button>
+            </form>
+            <!--<form action="../../index.html" method="post">
+        <div class="row">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Username">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-user"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="First Name">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-user"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Last Name">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-user"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <input type="email" class="form-control" placeholder="Email">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-envelope"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Phone Number">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-envelope"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Salary">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-envelope"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <div class="form-group">
+                    <label class="control-label">Department</label>
+                    <select class="form-control" id="departmentSelection">
+                    </select>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <div class="form-group">
+                    <label class="control-label">Job</label>
+                    <select class="form-control" id="jobSelection">
+                    </select>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <input type="password" class="form-control" placeholder="Password">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <input type="password" class="form-control" placeholder="Retype password">
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <span class="fas fa-lock"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <div class="icheck-primary">
+                        <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                        <label for="agreeTerms">
+                            I agree to the <a href="#">terms</a>
+                        </label>
+                    </div>
+                </div>-->
+            <!-- /.col -->
+            <!--<div class="col-4">
+        <button type="submit" class="btn btn-primary btn-block">Register</button>
+    </div>-->
+            <!-- /.col -->
+            <!--</div>
+        </div>
+    </form>-->
+
+            @*<div class="social-auth-links text-center">
+                <a href="#" class="btn btn-block btn-primary">
+                    <i class="fab fa-facebook mr-2"></i>
+                    Sign up using Facebook
+                </a>
+                <a href="#" class="btn btn-block btn-danger">
+                    <i class="fab fa-google-plus mr-2"></i>
+                    Sign up using Google+
+                </a>
+            </div>*@
+
+            <a asp-controller="Auth" asp-action="Login" class="text-center">I already have a membership</a>
+        </div>
+        <!-- /.form-box -->
+    </div><!-- /.card -->
+</div>
+<!-- /.register-box -->

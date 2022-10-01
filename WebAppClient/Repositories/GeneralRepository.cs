@@ -1,9 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using WebAppClient.Repositories.Interface;
 
@@ -15,15 +17,19 @@ namespace WebAppClient.Repositories
         private readonly string address;
         private readonly string request;
         private readonly HttpClient httpClient;
+        private readonly IHttpContextAccessor _contextAccessor;
 
         public GeneralRepository(string request)
         {
             this.address = "https://localhost:44385/api/";
             this.request = request;
+            _contextAccessor = new HttpContextAccessor();
+            var test = _contextAccessor.HttpContext.Session.GetString("token");
             httpClient = new HttpClient
             {
                 BaseAddress = new Uri(address) // setting the base address of the api
             };
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _contextAccessor.HttpContext.Session.GetString("token"));
         }
 
         // implements all the methods inside the interface

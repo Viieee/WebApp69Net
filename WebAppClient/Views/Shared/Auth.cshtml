@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var token = @HttpContextAccessor.HttpContext.Session.GetString("Token");
+    if (token == null)
+    {
+        token = "Logout";
+    }
+    //
+
+}
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        //session end
+        @*let Token = "";
+        Token=Token+"@token";
+        if (window.location.pathname != "/auth/register" && window.location.pathname != "/auth" && window.location.pathname != "/auth/login") {
+            if (Token == "Logout") {
+                SessionEnd();
+            }
+        }
+        function SessionEnd() {
+            window.location = "/Account/Logout";
+        }*@
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AdminLTE 3 | Auth</title>
+    <partial name="AdminLTE/_Styles" />
+</head>
+<body class="hold-transition login-page">
+    @RenderBody()
+
+    <partial name="AdminLTE/_Scripts" />
+</body>
+</html>
