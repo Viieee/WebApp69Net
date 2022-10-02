@@ -16,7 +16,6 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using WebAppClient.Context;
-using WebAppClient.Middleware;
 using WebAppClient.Repositories.Data;
 
 namespace WebAppClient

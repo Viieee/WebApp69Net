@@ -29,6 +29,7 @@ namespace WebAppClient.Repositories
             {
                 BaseAddress = new Uri(address) // setting the base address of the api
             };
+            // sticking the token into the request's header
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _contextAccessor.HttpContext.Session.GetString("token"));
         }
 

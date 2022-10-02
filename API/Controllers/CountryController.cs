@@ -7,7 +7,8 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize(Roles = "ROLE_ADD1_TRAINER, ROLE_ADD_TRAINER_MAN, ROLE_DM_ADD, ROLE_MSCS_MAN, ROLE_DM")]
+    [Authorize(Roles = "admin")]
     public class CountryController :  BaseController<CountryRepository, Country, int>
     {
         public CountryController(CountryRepository countryRepository) : base(countryRepository)

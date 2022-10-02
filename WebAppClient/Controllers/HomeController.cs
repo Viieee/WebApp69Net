@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -14,7 +15,7 @@ namespace WebAppClient.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+        IHttpContextAccessor HttpContextAccessor = new HttpContextAccessor();
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -22,7 +23,11 @@ namespace WebAppClient.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if(HttpContextAccessor.HttpContext.Session.GetString("token") != null)
+            {
+                return View();
+            }
+            return RedirectToAction("Index", "Auth"); 
         }
 
         public IActionResult Privacy()
