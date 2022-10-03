@@ -1,12 +1,31 @@
 ﻿@model IEnumerable<WebAppClient.Models.Location>
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var test = HttpContextAccessor.HttpContext.User;
+    string claimedRole = "";
+    string tableId = "dataTablesLocation";
+    if (test?.Claims != null)
+    {
+        claimedRole += test?.Claims?.SingleOrDefault(p => p.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")?.Value;
+        if (claimedRole != "admin")
+        {
+            tableId = "dataTablesLocationUser";
+        }
 
+    }
+}
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>Index</h1>
-<button class="btn btn-primary" onclick="addModalLocation()" data-toggle="modal" data-target="#modalLocation">Create New</button>
-<table class="table table-striped table-dark" id="dataTablesLocation">
+
+@if (claimedRole == "admin")
+{
+    <button class="btn btn-primary" onclick="addModalLocation()" data-toggle="modal" data-target="#modalLocation">Create New</button>
+}
+<table class="table table-striped table-dark" id="@tableId">
     <thead>
         <tr>
             <th>
@@ -24,7 +43,10 @@
             <th>
                 @Html.DisplayNameFor(model => model.Country)
             </th>
-            <th></th>
+            @if (claimedRole == "admin")
+            {
+                <th></th>
+            }
         </tr>
     </thead>
     <tbody>

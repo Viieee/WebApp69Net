@@ -1,4 +1,26 @@
 ﻿$(document).ready(() => {
+    $("#dataTablesRegionUser").DataTable({
+        "ajax": {
+            url: "/Region/GetAll",
+            type: "GET",
+            dataSrc: "",
+            dataType: "JSON"
+        },
+        "columns": [
+            {
+                "data": "",
+                "render": function (data, type, row) {
+                    return `${row.id.toString()}`;
+                }
+            },
+            {
+                "data": "",
+                "render": function (data, type, row) {
+                    return `${row.name}`;
+                }
+            }
+        ]
+    })
     $("#dataTablesRegion").DataTable({
         "ajax": {
             url: "/Region/GetAll",

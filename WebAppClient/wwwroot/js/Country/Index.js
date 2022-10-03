@@ -1,4 +1,32 @@
 ﻿$(document).ready(() => {
+    $("#dataTablesCountryUser").DataTable({
+        "ajax": {
+            url: "/Country/GetAll",
+            type: "GET",
+            dataSrc: "",
+            dataType: "JSON"
+        },
+        "columns": [
+            {
+                "data": "",
+                "render": function (data, type, row) {
+                    return `${row.id.toString()}`;
+                }
+            },
+            {
+                "data": "",
+                "render": function (data, type, row) {
+                    return `${row.name}`;
+                }
+            },
+            {
+                "data": "",
+                "render": function (data, type, row) {
+                    return `${row.region.name}`;
+                }
+            }
+        ]
+    })
     $("#dataTablesCountry").DataTable({
         "ajax": {
             url: "/Country/GetAll",

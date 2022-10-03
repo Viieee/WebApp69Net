@@ -6,7 +6,7 @@ using WebAppClient.Repositories.Data;
 
 namespace WebAppClient.Controllers
 {
-    [Authorize(Roles = "admin")]
+    //[Authorize(Roles = "admin, user")]
     public class CountryController : BaseController<Country, CountryRepository>
     {
         public CountryController(CountryRepository repository) : base(repository)

@@ -1,4 +1,38 @@
 ﻿$(document).ready(() => {
+    $("#dataTablesJobUser").DataTable({
+        "ajax": {
+            url: "/Job/GetAll",
+            type: "GET",
+            dataSrc: "",
+            dataType: "JSON"
+        },
+        "columns": [
+            {
+                "data": "",
+                "render": function (data, type, row) {
+                    return `${row.id.toString()}`;
+                }
+            },
+            {
+                "data": "",
+                "render": function (data, type, row) {
+                    return `${row.title}`;
+                }
+            },
+            {
+                "data": "",
+                "render": function (data, type, row) {
+                    return `${row.minSalary}`;
+                }
+            },
+            {
+                "data": "",
+                "render": function (data, type, row) {
+                    return `${row.maxSalary}`;
+                }
+            }
+        ]
+    })
     $("#dataTablesJob").DataTable({
         "ajax": {
             url: "/Job/GetAll",

@@ -1,4 +1,32 @@
 ﻿$(document).ready(() => {
+    $("#dataTablesDepartmentUser").DataTable({
+        "ajax": {
+            url: "/Department/GetAll",
+            type: "GET",
+            dataSrc: "",
+            dataType: "JSON"
+        },
+        "columns": [
+            {
+                "data": "",
+                "render": function (data, type, row) {
+                    return `${row.id.toString()}`;
+                }
+            },
+            {
+                "data": "",
+                "render": function (data, type, row) {
+                    return `${row.name}`;
+                }
+            },
+            {
+                "data": "",
+                "render": function (data, type, row) {
+                    return `${row.location.streetAddress}`;
+                }
+            }
+        ]
+    })
     $("#dataTablesDepartment").DataTable({
         "ajax": {
             url: "/Department/GetAll",

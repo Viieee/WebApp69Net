@@ -1,4 +1,21 @@
 ﻿@using static WebAppClient.Helpers.NavigationIndicatorHelper;
+@model IEnumerable<WebAppClient.Models.Country>
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var test = HttpContextAccessor.HttpContext.User;
+    string claimedRole = "";
+    string tableId = "dataTablesCountry";
+    if (test?.Claims != null)
+    {
+        claimedRole += test?.Claims?.SingleOrDefault(p => p.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")?.Value;
+        if (claimedRole != "admin")
+        {
+            tableId = "dataTablesCountryUser";
+        }
+
+    }
+}
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="~/Home" class="brand-link">
@@ -18,29 +35,32 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!--<li class="nav-item ">
-    <a asp-controller="Home" asp-action="Index" class="nav-link @Url.MakeActiveClass("home","index")">-->
+                <a asp-controller="Home" asp-action="Index" class="nav-link @Url.MakeActiveClass("home","index")">-->
                 @*<i class="nav-icon fas fa-home"></i>*@
                 <!--<p>
-                Home
-            </p>
-        </a>
-    </li>
-    <li class="nav-item ">
-        <a asp-controller="Home" asp-action="Privacy" class="nav-link @Url.MakeActiveClass("home","privacy")">-->
-                @*<i class="nav-icon fas fa-lock"></i>*@
-                <!--<p>
-                Privacy
-            </p>
-        </a>
-    </li>-->
-                <li class="nav-item">
-                    <a asp-controller="Employee" asp-action="Index" class="nav-link @Url.MakeActiveClass("home","privacy")">
-                        @*<i class="nav-icon fas fa-lock"></i>*@
-                        <p>
-                            Employees
+                            Home
                         </p>
                     </a>
                 </li>
+                <li class="nav-item ">
+                    <a asp-controller="Home" asp-action="Privacy" class="nav-link @Url.MakeActiveClass("home","privacy")">-->
+                @*<i class="nav-icon fas fa-lock"></i>*@
+                <!--<p>
+                            Privacy
+                        </p>
+                    </a>
+                </li>-->
+                @if (claimedRole == "admin")
+                {
+                    <li class="nav-item">
+                        <a asp-controller="Employee" asp-action="Index" class="nav-link @Url.MakeActiveClass("home","privacy")">
+                            @*<i class="nav-icon fas fa-lock"></i>*@
+                            <p>
+                                Employees
+                            </p>
+                        </a>
+                    </li>
+                }
                 <li class="nav-item ">
                     <a asp-controller="Country" asp-action="Index" class="nav-link @Url.MakeActiveClass("home","privacy")">
                         @*<i class="nav-icon fas fa-lock"></i>*@
@@ -86,6 +106,14 @@
                         @*<i class="nav-icon fas fa-lock"></i>*@
                         <p>
                             Job History
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a asp-controller="Auth" asp-action="Logout" class="nav-link @Url.MakeActiveClass("home","privacy")">
+                        @*<i class="nav-icon fas fa-lock"></i>*@
+                        <p>
+                            Logout
                         </p>
                     </a>
                 </li>

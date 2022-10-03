@@ -1,4 +1,46 @@
 ﻿$(document).ready(() => {
+    $("#dataTablesJobHistoryUser").DataTable({
+        "ajax": {
+            url: "/JobHistory/GetAll",
+            type: "GET",
+            dataSrc: "",
+            dataType: "JSON"
+        },
+        "columns": [
+            {
+                "data": "",
+                "render": function (data, type, row) {
+                    return `${row.employee.firstName} ${row.employee.lastName}`;
+                }
+            },
+            {
+                "data": "",
+                "render": function (data, type, row) {
+                    var startDate = new Date(row.startDate);
+                    return `${startDate.getUTCDate()} - ${startDate.getUTCMonth() + 1} - ${startDate.getUTCFullYear()}`;
+                }
+            },
+            {
+                "data": "",
+                "render": function (data, type, row) {
+                    var endDate = new Date(row.endDate);
+                    return `${endDate.getUTCDate()} - ${endDate.getUTCMonth() + 1} - ${endDate.getUTCFullYear()}`;
+                }
+            },
+            {
+                "data": "",
+                "render": function (data, type, row) {
+                    return `${row.job.title}`;
+                }
+            },
+            {
+                "data": "",
+                "render": function (data, type, row) {
+                    return `${row.department.name}`;
+                }
+            }
+        ]
+    })
     $("#dataTablesJobHistory").DataTable({
         "ajax": {
             url: "/JobHistory/GetAll",

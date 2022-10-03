@@ -47,5 +47,15 @@ namespace WebAppClient.Controllers.Auth
             }
             return View("Login");
         }
+
+        [Route("Logout")]
+        [HttpGet]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove("token");
+            return RedirectToAction("Index");
+        }
     }
+
+
 }

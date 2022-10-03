@@ -101,6 +101,12 @@ namespace WebAppClient
                 var request = context.HttpContext.Request;
                 var response = context.HttpContext.Response;
 
+                // how to take role value from the token
+                //var test = context.HttpContext.User;
+                //if (test?.Claims != null)
+                //{
+                //    string claimed = test?.Claims?.SingleOrDefault(p => p.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")?.Value;
+                //}
 
                 if (response.StatusCode.Equals((int)HttpStatusCode.Forbidden))
                 {

@@ -1,4 +1,5 @@
 ﻿using API.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -15,12 +16,14 @@ namespace API.Controllers
             this.repository = repository;
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Get()
         {
             var data = repository.Get();
             return Ok(new { result = 200, data = data });
         }
+        [Authorize]
         [HttpGet("{id}")]
         public IActionResult Get(Primary id)
         {
@@ -38,6 +41,7 @@ namespace API.Controllers
                 return NotFound(); // 404 not found if the region is not found
             }
         }
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public IActionResult Create(Entity entity)
         {
@@ -46,7 +50,7 @@ namespace API.Controllers
                 return Ok(new { status = 200, message = "successfully inserted" }); // returning the detail of item that just created
             return BadRequest();
         }
-
+        [Authorize(Roles = "admin")]
         [HttpPut("{id}")]
         public IActionResult Edit(Primary id, Entity entity)
         {
@@ -68,6 +72,7 @@ namespace API.Controllers
             }
             return BadRequest();
         }
+        [Authorize(Roles = "admin")]
         [HttpDelete("{id}")]
         public IActionResult Delete(Primary id)
         {

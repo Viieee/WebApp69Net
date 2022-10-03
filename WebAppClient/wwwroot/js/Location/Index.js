@@ -1,4 +1,45 @@
 ﻿$(document).ready(() => {
+    $("#dataTablesLocationUser").DataTable({
+        "ajax": {
+            url: "/Location/GetAll",
+            type: "GET",
+            dataSrc: "",
+            dataType: "JSON"
+        },
+        "columns": [
+            {
+                "data": "",
+                "render": function (data, type, row) {
+                    return `${row.id.toString()}`;
+                }
+            },
+            {
+                "data": "",
+                "render": function (data, type, row) {
+                    console.log(row);
+                    return `${row.streetAddress}`;
+                }
+            },
+            {
+                "data": "",
+                "render": function (data, type, row) {
+                    return `${row.postalCode}`;
+                }
+            },
+            {
+                "data": "",
+                "render": function (data, type, row) {
+                    return `${row.city}`;
+                }
+            },
+            {
+                "data": "",
+                "render": function (data, type, row) {
+                    return `${row.country.name}`;
+                }
+            }
+        ]
+    })
     $("#dataTablesLocation").DataTable({
         "ajax": {
             url: "/Location/GetAll",

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebAppClient.Repositories.Interface;
 
 namespace WebAppClient.Controllers.Base
@@ -14,6 +15,7 @@ namespace WebAppClient.Controllers.Base
             this.repository = repository;
         }
 
+        [Authorize]
         [HttpGet] // /Entity/GetAll
         public JsonResult GetAll()
         {
@@ -21,6 +23,7 @@ namespace WebAppClient.Controllers.Base
             return Json(result);
         }
 
+        [Authorize]
         [HttpGet] // /Entity/Get/id
         public JsonResult Get(int id)
         {
@@ -28,6 +31,7 @@ namespace WebAppClient.Controllers.Base
             return Json(result);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost] // /Entity/Post
         public JsonResult Post(Entity entity)
         {
@@ -35,6 +39,7 @@ namespace WebAppClient.Controllers.Base
             return Json(result);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPut] // /Entity/Put/id
         public JsonResult Put(int id, Entity entity)
         {
@@ -42,6 +47,7 @@ namespace WebAppClient.Controllers.Base
             return Json(result);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpDelete] // /Entity/Delete/id
         public JsonResult Delete(int id)
         {
